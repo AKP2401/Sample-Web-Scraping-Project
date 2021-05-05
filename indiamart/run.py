@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 def run():
     jj = 0
-    page = requests.get('https://dir.indiamart.com/')
+    '''page = requests.get('https://dir.indiamart.com/')
 
     soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -14,7 +14,17 @@ def run():
 
     for i in result:
         Titles.append(i.text)
-        URLS.append(i['href'])
+        URLS.append(i['href'])'''
+    URLS = []
+    URLS.append('https://dir.indiamart.com/indianexporters/g_eyelet.html')
+    URLS.append('https://dir.indiamart.com/indianexporters/g_garmnt.html')
+    URLS.append('https://dir.indiamart.com/indianexporters/special-footwear.html')
+    URLS.append('https://dir.indiamart.com/indianexporters/te_fabri.html')
+    URLS.append('https://dir.indiamart.com/indianexporters/uniform-dresses.html')
+    URLS.append('https://dir.indiamart.com/indianexporters/gloves.html')
+
+    Titles = ['Thread', 'Ladies', 'Workshoes', 'Apparel Fabric', 'Commercial uniforms', 'Gloves']
+
     jsun = {}
     for i in range(len(URLS)):
         page = requests.get(URLS[i])
@@ -33,6 +43,6 @@ def run():
         jsun.update(jin)
 
     print()
-    print(f'{len(jsun)} Unique Sellers')
+    print(f'{len(jsun)-6} Unique Sellers')
     return jsun
 
